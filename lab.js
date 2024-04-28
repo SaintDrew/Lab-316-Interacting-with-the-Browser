@@ -6,7 +6,7 @@ function checkGuess() {
     const userGuess = parseInt(document.getElementById('userGuess').value);
     const output = document.getElementById('output');
 
-    if (isNaN(userGuess)  userGuess < 1  userGuess > 20) {
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 20) {
         alert("Please enter a valid number between 1 and 20.");
         return;
     }
@@ -14,15 +14,15 @@ function checkGuess() {
     guessesRemaining--;
 
     if (userGuess === secretNumber) {
-        output.textContent = "Congratulations! You guessed the right number: ${ userGuess }";
+        output.textContent = `Congratulations! You guessed the right number: ${ userGuess }`;
         setTimeout(() => window.location.reload(), 4000); // Reload the game after 4 seconds
     } else {
 
         if (guessesRemaining > 0) {
             alert("Try again!");
-            output.textContent = "Wrong guess! You have ${ guessesRemaining } guesses remaining.";
+            output.textContent = `Wrong guess! You have ${ guessesRemaining } guesses remaining.`;
         } else {
-            output.textContent = "Game over! The correct number was ${ secretNumber }.";
+            output.textContent = `Game over! The correct number was ${ secretNumber }.`;
             setTimeout(() => window.location.reload(), 4000); // Reload the game after 4 seconds
         }
     }
